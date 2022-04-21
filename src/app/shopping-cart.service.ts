@@ -7,8 +7,6 @@ import { Product } from './models/product.class';
 })
 export class ShoppingCartService {
   allItems: any = [];
-  alreadyPushed = false;
-
   cart: any = [];
 
 
@@ -20,8 +18,6 @@ export class ShoppingCartService {
   addToShoppingCart(product: any) {
 
     this.allItems.push(product)
-    this.alreadyPushed = true;
-
 
     console.log(this.allItems)
 
