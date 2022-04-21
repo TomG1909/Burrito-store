@@ -1,14 +1,21 @@
 <div class="header">
- <div>Burrito GmbH</div>
+    <div>Burrito GmbH</div>
 </div>
-<div class="product-box">
-<div>{{burritoClassic.name}}</div>
-<div>{{burritoClassic.price}}</div>
-<div>
+<div *ngFor="let product of productList, index as i" class="container">
+    <div class="product-container">
+        <div class="product-box">
+            <div>{{product.name}}</div>
+            <div>{{product.price + ' ' +'EUR'}}</div>
+            <button mat-mini-fab>
+  <mat-icon (click)="cart.addToShoppingCart(product)">add</mat-icon>
+</button>
+        </div>
 
-</div>
+
+        <div class="shopping-cart">
+            <app-shopping-cart></app-shopping-cart>
+        </div>
 
 
-
-</div>
-<router-outlet></router-outlet>
+    </div>
+    <router-outlet></router-outlet>
