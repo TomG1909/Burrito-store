@@ -1,8 +1,8 @@
 <div class="cart-container">
     <div>
-        <div *ngFor="let result of cart.allItems, index as i">
+        <div *ngFor="let items of cart.allItems, index as i">
             <div>
-                {{result.name}}
+                {{items.name}}
             </div>
 
         </div>
