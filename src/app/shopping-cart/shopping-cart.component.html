@@ -1,15 +1,42 @@
-<div class="cart-container">
+<div class="title-cart">Warenkorb</div>
+<div [class.empty]="cart.cartIsEmpty" class="cart-container">
     <div>
         <div *ngFor="let items of cart.allItems, index as i">
-            <div>
-                {{items.name}}
+            <div class="product-row">
+                <div class="quantity-container">
+                    <button mat-icon-button>
+                    <mat-icon (click)="cart.addToShoppingCart(items)">add</mat-icon>
+                  </button> {{items.quantity}}
+                    <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+                    <mat-icon (click)="cart.decreaseQuantity(items)">remove</mat-icon>
+                  </button>
+                </div>
+                <div style="width:25vw">{{items.name}}</div>
+                <div style="width:25vw">{{items.updatedPrice.toFixed(2).replace('.', ',') + ' ' + 'EUR'}}</div>
+
+                <button class="red" mat-mini-fab>
+                    <mat-icon (click)="cart.removeItem(items)">delete</mat-icon>
+                  </button>
             </div>
 
         </div>
 
-        <div>
-            <img src="assets/img/shopping-bag.jpg">
+        <div *ngIf="cart.cartIsEmpty">
+            <div>
+                <img src="assets/img/shopping-bag.jpg">
+            </div>
         </div>
-
+        <div class="total" *ngFor="let result of cart.total">
+            <div [hidden]="cart.cartIsEmpty">
+                <div>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <input [class.InputText]="cart.promoCodeInserted" matInput type="text" [(ngModel)]="cart.promoCode">
+                    </mat-form-field>
+                    <button mat-flat-button class="red" (click)="cart.getTotalSum()">Einlösen</button>
+                </div>
+                <div>{{'Gesamtsumme:'+ ' ' + result.toFixed(2).replace('.', ',') + ' '+ 'EUR'}}</div>
+            </div>
+        </div>
     </div>
+
 </div>

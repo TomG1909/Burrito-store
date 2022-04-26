@@ -5,7 +5,7 @@
     <div class="product-container">
         <div class="product-box">
             <div>{{product.name}}</div>
-            <div>{{product.price + ' ' +'EUR'}}</div>
+            <div>{{product.price.toFixed(2).replace('.',',') + ' ' +'EUR'}}</div>
             <button mat-mini-fab>
   <mat-icon (click)="cart.addToShoppingCart(product)">add</mat-icon>
 </button>

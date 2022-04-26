@@ -3,8 +3,8 @@
     background-color: green;
     color: white;
     align-items: center;
-
-
+    display: flex;
+    padding-left: 20px;
 }
 
 .product-box {
@@ -26,12 +26,11 @@
 
 .container {
     display: flex;
-
 }
 
 .shopping-cart {
     position: absolute;
-    top: 100px;
+    top: 91px;
     right: 0;
     min-width: 30%;
 }
